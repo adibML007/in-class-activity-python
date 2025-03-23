@@ -1,6 +1,6 @@
 # Cyber Security Data Analysis
 ## Project Overview
-This dataset is from the Machine Learning Repository Provided by the Center for Machine Learning and Intelligent Systems at the University of California, Irvine.
+This dataset contains network information features to determine anomaly and normal behavior.
 
 We will use to predict whether there is anomaly or not. This is a classification task.
 
