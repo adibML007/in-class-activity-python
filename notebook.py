@@ -132,7 +132,6 @@ from sklearn.ensemble import RandomForestClassifier
 # Define the models to be evaluated
 models = {
     'Logistic Regression': LogisticRegression(max_iter=1000),
-    'Decision Tree': DecisionTreeClassifier(),
     'Random Forest': RandomForestClassifier()
 }
 
@@ -145,7 +144,7 @@ models = {
 
 # Evaluate the models using 10-fold cross-validation and display the mean and standard deviation of the accuracy
 for name, model in models.items():
-    scores = cross_val_score(model, X, y, cv=10, scoring='accuracy')
+    scores = cross_val_score(model, X, y, cv=2, scoring='accuracy')
     print(f"{name}: Mean Accuracy = {scores.mean():.4f}, Std = {scores.std():.4f}")
 
 
