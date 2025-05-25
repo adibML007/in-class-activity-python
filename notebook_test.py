@@ -27,7 +27,7 @@ class TestNotebook(unittest.TestCase):
 
     def test_model_evaluation(self):
         for name, model in models:
-            kfold = KFold(n_splits=2, random_state=5, shuffle=True)
+            kfold = KFold(n_splits=10, random_state=5, shuffle=True)
             cv_results = cross_val_score(model, X, y, cv=kfold, scoring='accuracy')
             self.assertGreater(mean(cv_results), 0.5, f"Model {name} accuracy is too low")
             self.assertLess(std(cv_results), 0.5, f"Model {name} accuracy variance is too high")

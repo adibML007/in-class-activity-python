@@ -117,7 +117,7 @@ y = df['class'].values
 
 from sklearn.model_selection import cross_val_score
 from sklearn.linear_model import LogisticRegression
-from sklearn.tree import DecisionTreeClassifier
+from sklearn.svm import SVC
 from sklearn.ensemble import RandomForestClassifier
 
 # Now the required model libraries are imported and ready for use.
@@ -130,11 +130,10 @@ from sklearn.ensemble import RandomForestClassifier
 
 
 # Define the models to be evaluated
-models = {
-    'Logistic Regression': LogisticRegression(max_iter=1000),
-    'Random Forest': RandomForestClassifier()
-}
-
+models = []
+models.append(('LR', LogisticRegression(max_iter=1000)))
+models.append(('SVM', SVC()))
+models.append(('RandomForestClassifier', RandomForestClassifier()))
 
 # # Step 12: Evaluating the models
 # TODO: Evaluate the models using 10 fold cross-validation and display the mean and standard deviation of the accuracy.
@@ -143,8 +142,8 @@ models = {
 
 
 # Evaluate the models using 10-fold cross-validation and display the mean and standard deviation of the accuracy
-for name, model in models.items():
-    scores = cross_val_score(model, X, y, cv=2, scoring='accuracy')
+for name, model in models:
+    scores = cross_val_score(model, X, y, cv=10, scoring='accuracy')
     print(f"{name}: Mean Accuracy = {scores.mean():.4f}, Std = {scores.std():.4f}")
 
 
